@@ -1,0 +1,15 @@
+h2{
+    color: red;
+    font size:30px;
+    margin: 0px;
+
+}
+h1#second-title{
+    color: blue;
+}
+h1.italic-title{
+    font-style: italic;
+}
+rect{
+    fill: rgb(0, 195, 255);
+}
