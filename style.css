@@ -35,6 +35,46 @@ h1.italic-title{
     stroke: rgb(46, 43, 35);
     stroke-width: "2px";
 }
+#rect8{
+    fill: rgb(53, 221, 151);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect9{
+    fill: rgb(39, 110, 202);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect10{
+    fill: rgb(154, 231, 102);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect11{
+    fill: rgb(214, 250, 82);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect12{
+    fill: rgb(154, 231, 102);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect13{
+    fill: rgb(214, 250, 82);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect15{
+    fill: rgb(211, 110, 241);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect16{
+    fill: rgb(38, 64, 136);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
 #circle1{
     fill: rgb(45, 48, 49);
     stroke-width: "5px";
@@ -57,6 +97,16 @@ h1.italic-title{
 }
 #circle5{
     fill: white;
+    stroke: rgb(66, 66, 66);
+    stroke-width: "5px";
+}
+#circle6{
+    fill: white;
+    stroke: rgb(66, 66, 66);
+    stroke-width: "5px";
+}
+#circle7{
+    fill: rgb(238, 235, 37);
     stroke: rgb(66, 66, 66);
     stroke-width: "5px";
 }
