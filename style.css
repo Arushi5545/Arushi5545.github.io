@@ -127,7 +127,7 @@ h1.italic-title{
 }
 #path2{
     stroke: rgb(38, 37, 39);
-    fill: rgb(103, 52, 197);
+    fill: rgba(103, 52, 197, 0.575);
     stroke-width: 2px;
     fill-opacity: 20;
 
