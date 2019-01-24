@@ -10,6 +10,83 @@ h1#second-title{
 h1.italic-title{
     font-style: italic;
 }
-rect{
-    fill: rgb(0, 195, 255);
+#rect2{
+    fill: rgb(82, 141, 250);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "2px";
+}
+#rect3{
+    fill: rgb(253, 241, 66);
+    stroke: rgb(46, 43, 35);
+    stroke-width: "2px";
+}
+#rect4{
+    fill: rgb(228, 120, 19);
+    stroke: rgb(46, 43, 35);
+    stroke-width: "2px";
+}
+#rect6{
+    fill: rgb(253, 209, 66);
+    stroke: rgb(46, 43, 35);
+    stroke-width: "2px";
+}
+#rect7{
+    fill: rgb(224, 179, 28);
+    stroke: rgb(46, 43, 35);
+    stroke-width: "2px";
+}
+#circle1{
+    fill: rgb(45, 48, 49);
+    stroke-width: "5px";
+    
+}
+#circle2{
+    fill: rgb(37, 122, 172);
+    stroke-width: "5px";
+    
+}
+#circle3{
+    fill:rgb(94, 164, 160);
+    stroke: rgb(23, 24, 24);
+    stroke-width: "5px";
+}
+#circle4{
+    fill: none;
+    stroke: rgb(59, 61, 61);
+    stroke-width: "20px";
+}
+#circle5{
+    fill: white;
+    stroke: rgb(66, 66, 66);
+    stroke-width: "5px";
+}
+/* #p1 {background-color:rgb(255,0,0);} */
+#line1{
+    stroke: black;
+    stroke-width: 2px;
+}
+#line2{
+    stroke: black;
+    stroke-width: 2px;
+}
+#path1{
+    stroke: black;
+    fill: none;
+    stroke-width: 10px;
+
+}
+#path2{
+    stroke: rgb(38, 37, 39);
+    fill: rgb(103, 52, 197);
+    stroke-width: 2px;
+    fill-opacity: 20;
+
+}
+#line3{
+    stroke: black;
+    stroke-width: 2px;
+}
+#line4{
+    stroke: black;
+    stroke-width: 4px;
 }
