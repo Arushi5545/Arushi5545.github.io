@@ -2,7 +2,7 @@
                 //function to enter value of GDP
                 console.log("enter function changeFillRed() to update to Red")
                 console.log("enter function changeFillGreen() to update to Green")
-                console.log("enter function increaseRadius() to increase by 10")
+                console.log("enter function decreaseRadius() to increase by 10")
                 //var colorCode;
                 //function changes fill to red
                 var changeFillRed=function(){
@@ -18,7 +18,7 @@
                 }
 
                 //function changes radius
-                var increaseRadius=function(){
+                var decreaseRadius=function(){
                     document.getElementById("circleGDP").style.r = 10;
                 }
                 // if (document.getElementById("buttonRed").onclick == true) {
