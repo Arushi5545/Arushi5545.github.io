@@ -38,11 +38,10 @@ svgDoc.append("g").selectAll("rect")
 .attr("height",function(d,i){return d});
 
 
-//button to swap over datasets
+//button for dataset 1
 d3.select("body").append("button")
     .text("Dataset 1")
     .on("click",function(){
-        //select new data
         dataIndex=1;
           
         //rejoin data
@@ -75,8 +74,7 @@ rectangle.enter().append("rect")
 d3.select("body").append("button")
     .text("Dataset 2")
     .on("click",function(){
-        //select new data
-       
+
             dataIndex=2;  
         //rejoin data
         var rectangle = svgDoc.select("g").selectAll("rect")
