@@ -9,6 +9,11 @@
 #triangle1{
       fill : rgba(90, 184, 71, 0.8);
 }
+.button {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+  }
 
 
 
