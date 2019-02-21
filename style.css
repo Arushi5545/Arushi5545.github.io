@@ -142,3 +142,15 @@ h1.italic-title{
     stroke: black;
     stroke-width: 4px;
 }
+.button {
+    background-color: rgb(171, 230, 253);
+    border: none;
+    color: rgb(63, 63, 63);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
