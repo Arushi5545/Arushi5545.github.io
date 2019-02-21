@@ -1,5 +1,5 @@
 
 
-d3.csv("CITES_Trafficking.csv", function(data){
+d3.csv("CITES_Trafficking_edited.csv", function(data){
     console.log("csv:", data);
     });
