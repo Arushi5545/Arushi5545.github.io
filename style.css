@@ -1,156 +1,25 @@
 
+/* heading */
+h1 {
+	text-align: center;
+    font-family: 'Roboto', sans-serif;
+	font-size: 44px;
+	/* padding: 10px ; */
 
-h2{
-    color: red;
-    font size:30px;
-    margin: 0px;
-
-}
-h1#second-title{
-    color: blue;
-}
-h1.italic-title{
-    font-style: italic;
-}
-#rect2{
-    fill: rgb(82, 141, 250);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect3{
-    fill: rgb(253, 241, 66);
-    stroke: rgb(46, 43, 35);
-    stroke-width: "2px";
-}
-#rect4{
-    fill: rgb(228, 120, 19);
-    stroke: rgb(46, 43, 35);
-    stroke-width: "2px";
-}
-#rect6{
-    fill: rgb(253, 209, 66);
-    stroke: rgb(46, 43, 35);
-    stroke-width: "2px";
-}
-#rect7{
-    fill: rgb(224, 179, 28);
-    stroke: rgb(46, 43, 35);
-    stroke-width: "2px";
-}
-#rect8{
-    fill: rgb(53, 221, 151);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect9{
-    fill: rgb(39, 110, 202);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect10{
-    fill: rgb(154, 231, 102);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect11{
-    fill: rgb(214, 250, 82);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect12{
-    fill: rgb(154, 231, 102);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect13{
-    fill: rgb(214, 250, 82);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect15{
-    fill: rgb(211, 110, 241);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#rect16{
-    fill: rgb(38, 64, 136);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "2px";
-}
-#circle1{
-    fill: rgb(45, 48, 49);
-    stroke-width: "5px";
-    
-}
-#circle2{
-    fill: rgb(37, 122, 172);
-    stroke-width: "5px";
-    
-}
-#circle3{
-    fill:rgb(94, 164, 160);
-    stroke: rgb(23, 24, 24);
-    stroke-width: "5px";
-}
-#circle4{
-    fill: none;
-    stroke: rgb(59, 61, 61);
-    stroke-width: "20px";
-}
-#circle5{
-    fill: white;
-    stroke: rgb(66, 66, 66);
-    stroke-width: "5px";
-}
-#circle6{
-    fill: white;
-    stroke: rgb(66, 66, 66);
-    stroke-width: "5px";
-}
-#circle7{
-    fill: rgb(238, 235, 37);
-    stroke: rgb(66, 66, 66);
-    stroke-width: "5px";
-}
-/* #p1 {background-color:rgb(255,0,0);} */
-#line1{
-    stroke: black;
-    stroke-width: 2px;
-}
-#line2{
-    stroke: black;
-    stroke-width: 2px;
-}
-#path1{
-    stroke: black;
-    fill: none;
-    stroke-width: 10px;
 
 }
-#path2{
-    stroke: rgb(38, 37, 39);
-    fill: rgba(103, 52, 197, 0.575);
-    stroke-width: 2px;
-    fill-opacity: 20;
-
-}
-#line3{
-    stroke: black;
-    stroke-width: 2px;
-}
-#line4{
-    stroke: black;
-    stroke-width: 4px;
-}
-.button {
-    background-color: rgb(171, 230, 253);
-    border: none;
-    color: rgb(63, 63, 63);
-    padding: 10px 20px;
+/* Subheading */
+ h2{
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 16px;
-  }
+    font-family: 'Roboto Mono', monospace;
+	font-size: 14px;
+	/* padding: 10px 10px; */
+
+}
+#work_list{
+margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+}
+

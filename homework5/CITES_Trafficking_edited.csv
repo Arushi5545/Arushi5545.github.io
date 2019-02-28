@@ -1,4 +1,4 @@
-Year,App.,Class,Order,Importer,Exporter,Importer reported quantity,Exporter reported quantity,Term,Purpose,Source
+"Year","App.","Class","Order","Importer","Exporter","Importer reported quantity","Exporter reported quantity","Term","Purpose","Source"
 2016,I,Aves,Falconiformes,TR,NL,,1,bodies,T,C
 2016,I,Aves,Falconiformes,XV,RS,,1,bodies,Q,O
 2016,I,Aves,Falconiformes,BE,NO,,43,feathers,S,W
