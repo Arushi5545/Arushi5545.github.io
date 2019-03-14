@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>SANKEY_Arushi</title>
+<title>SANKEY Experiment</title>
 <style>
 
 .node rect {
@@ -12,7 +11,7 @@
 
 .node text {
   pointer-events: none;
-  /* text-shadow: 0 1px 0 #fff; */
+  text-shadow: 0 1px 0 #fff;
 }
 
 .link {
@@ -61,7 +60,6 @@ var sankey = d3.sankey()
 var path = sankey.link();
 
 // load the data (using the timelyportfolio csv method)
-//d3.csv("sanky.csv", function(error, data) {
 d3.csv("sanky.csv", function(error, data) {
 
   //set up graph in same style as original example but empty
