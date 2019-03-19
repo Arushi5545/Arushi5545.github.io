@@ -37,7 +37,11 @@ h1 {
   font-size: 17px;
 }
 
-
+#sanky{
+margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
 
 body {
 	padding: 10px;
@@ -45,25 +49,16 @@ body {
 	max-width: 1200px;
 	margin: auto;
 }
-
-/* chart div  */
 #chart {
 	height: 500px;
 	font: 13px sans-serif;
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 14px 14px;
 }
 
-
-/* nodes  */
 .node rect {
 	fill-opacity: .9;
 	shape-rendering: crispEdges;
 	stroke-width: 0;
 }
-
 .node text {
 	text-shadow: 0 1px 0 #fff;
 }
@@ -72,50 +67,49 @@ body {
 	stroke: #000;
 	stroke-opacity: .2;
 }
-body {
-	padding: 10px;
-	min-width: 600px;
-	max-width: 1200px;
-	margin: auto;
-}
 
-#chart {
-	height: 500px;
-	font: 13px sans-serif;
+svg {
+  font: 12px sans-serif;
 }
 
 .node rect {
-	fill-opacity: .9;
-	shape-rendering: crispEdges;
-	stroke-width: 0;
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
 }
 
 .node text {
-	/* text-shadow: 0 1px 0 #fff; */
-	margin-left: auto;
-  margin-right: auto;
-	/* padding: 12px 16px;  */
-	font-family: 'Nunito Sans', sans-serif;
-	font-size: 12px;
-	text-align: left;
-	/* width: 50%; */
+  font-size: 14px;
+  pointer-events: none;
 }
 
 .link {
-	fill: none;
-	stroke: #000;
-	stroke-opacity: .2;
+  fill: none;
+  stroke: #1A237E;
+  stroke-opacity: .2;
 }
-/* for tooltips */
-div.tooltip {	
-	position: absolute;			
-	text-align: center;			
-	width: 60px;					
-	height: 28px;					
-	padding: 2px;				
-	font: 12px sans-serif;		
-	background: lightsteelblue;	
-	border: 0px;		
-	border-radius: 8px;			
-	pointer-events: none;			
+
+.link:hover {
+  stroke-opacity: .5;
+}
+
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+.link:hover {
+  stroke-opacity: .5;
 }
