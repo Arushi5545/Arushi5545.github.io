@@ -29,7 +29,7 @@ d3.csv("All_Places_of_Worship_test.csv", function(data){
   //   Y: data.Y
   // }
 
-   //to make X, Y in an array
+  
 
  
   //console.log("points", points);
@@ -40,27 +40,45 @@ d3.csv("All_Places_of_Worship_test.csv", function(data){
   //to make circles for each X,Y
   var pins = svg.selectAll("circle")
           .data(data);
-
+ 
+  var pointsArray_X=[];
+  var pointsArray_Y=[];
+  var x=0;
+  var y=0;
 
 //
   pins.enter().append("circle")
-          .attr("cx", function(d) { return projection([d.X,d.Y])[0]; })
-          .attr("cy", function(d) { return projection([d.X,d.Y])[1]; })
-        // .attr("transform", function(d) {
+          .attr("cx", function(d) { 
+            //console.log("X", projection([d.X,d.Y])[0]);
+            pointsArray_X[x]=projection([d.X,d.Y])[0];
+            x++;
+            return projection([d.X,d.Y])[0]; 
+          })
+          .attr("cy", function(d) {
+            //console.log("Y", projection([d.X,d.Y])[1]);
+              pointsArray_Y[y]=projection([d.X,d.Y])[1];
+              y++;
+             return projection([d.X,d.Y])[1]; 
+            })
+          // var pointsArray=[projection([d.X,d.Y])[0],projection([d.X,d.Y])[1]]
+          // console.log(pointsArray)
+          
+          // .attr("transform", function(d) {
           //     return "translate(" + projection(points) + ")";
           // })
-          .attr("r", 1)
-          .style("fill", function(d) {
-            console.log(d.SUBTYPE)
-            if (d.SUBTYPE === CHRISTIAN) {return "red"}
-            else 	if (d.SUBTYPE === HINDU) {return "blue"}
-            else 	if (d.SUBTYPE === BUDDHIST) {return "green"}
-            else 	if (d.SUBTYPE === MUSLIM) {return "orange"}
-            else 	if (d.SUBTYPE === OTHER) {return "yellow"}
-            else 	{ return "red" }
-        ;})
+          .attr("r", 1);
+          // .style("fill", function(d) {
+          //   //console.log(d.SUBTYPE)
+          //   if (d.SUBTYPE == CHRISTIAN) {return "red"}
+          //   else 	if (d.SUBTYPE == HINDU) {return "blue"}
+          //   else 	if (d.SUBTYPE == BUDDHIST) {return "green"}
+          //   else 	if (d.SUBTYPE == MUSLIM) {return "orange"}
+          //   else 	if (d.SUBTYPE == OTHER) {return "yellow"}
+          //   else 	{ return "red" }
+        
           
-
+        console.log("X", pointsArray_X);
+        console.log("Y", pointsArray_Y);
           
   // PlacesOfWorship.enter().append("circle")
   //   .attr("cx", function(d) { return projection(d[points.X], d[points.Y])[0]; })
