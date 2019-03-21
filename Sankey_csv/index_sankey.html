@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>SANKEY Experiment</title>
-<style>
 
-.node rect {
-  cursor: move;
-  fill-opacity: .9;
-  shape-rendering: crispEdges;
-}
-
-.node text {
-  pointer-events: none;
-  text-shadow: 0 1px 0 #fff;
-}
-
-.link {
-  fill: none;
-  stroke: #000;
-  stroke-opacity: .2;
-}
-
-.link:hover {
-  stroke-opacity: .5;
-}
-
-</style>
 <body>
+    <div id="cover" class="cover_content">
+        <h1> Wildlife Trafficking</h1>
+        <h2>INDENTIFYING THE RESPONSIBLE COUNTIRIES</h2>
+    </div>
+   <div id=bodyText>
+    <p >*placeholder*‘Wildlife’ means all fauna and flora. ‘Fauna’ are animals and birds, such as tigers and falcons, but also include fish. ‘Flora’ are plants, such as orchids or cacti, but also include timber and non-timber forest products, some of which are illegally traded at very significant levels.
+
+        'Crime', as far as ICCWC is concerned, refers to acts committed contrary to national laws and regulations intended to protect natural resources and to administer their management and use. This may start with the illicit exploitation of natural resources, such as the poaching of an elephant, uprooting of a rare orchid, unauthorized logging of trees, or unlicensed netting of sturgeons. It may also include subsequent acts, such as the processing of fauna and flora into products, their transportation, offer for sale, sale, possession, etc. It also includes the concealment and laundering of the financial benefits made out of these crimes. Some of these crimes will take place solely in the country of origin, whilst others will also occur in the country of destination, where live fauna or flora specimens, or their parts and derivatives, are finally consumed.</p>
+   </div>
 
 <p id="chart">
 
+<link rel="stylesheet" href= "style.css" />
+
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="sankey.js"></script>
+<div id="sankey">
 <script>
 	
 var units = "Widgets";
@@ -60,7 +49,7 @@ var sankey = d3.sankey()
 var path = sankey.link();
 
 // load the data (using the timelyportfolio csv method)
-d3.csv("export_import_class.csv", function(error, data) {
+d3.csv("Combined_export_import_1.csv", function(error, data) {
     console.log("Reading data");
 
   //set up graph in same style as original example but empty
@@ -172,6 +161,6 @@ d3.csv("export_import_class.csv", function(error, data) {
 });
 
 </script>
-
+</div>
 </body>
 </html>

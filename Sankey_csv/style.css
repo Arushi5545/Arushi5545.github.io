@@ -37,8 +37,8 @@ h1 {
   font-size: 17px;
 }
 
-#sanky{
-margin-left: auto;
+#sankey{
+	margin-left: auto;
   margin-right: auto;
   width: 40%;
 }
@@ -60,7 +60,7 @@ body {
 	stroke-width: 0;
 }
 .node text {
-	text-shadow: 0 1px 0 #fff;
+text-shadow: 0 1px 0 #fff;
 }
 .link {
 	fill: none;
@@ -93,23 +93,4 @@ svg {
   stroke-opacity: .5;
 }
 
-.node rect {
-  cursor: move;
-  fill-opacity: .9;
-  shape-rendering: crispEdges;
-}
 
-.node text {
-  pointer-events: none;
-  text-shadow: 0 1px 0 #fff;
-}
-
-.link {
-  fill: none;
-  stroke: #000;
-  stroke-opacity: .2;
-}
-
-.link:hover {
-  stroke-opacity: .5;
-}
