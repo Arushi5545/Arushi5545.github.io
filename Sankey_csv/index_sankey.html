@@ -8,9 +8,7 @@
         <h2>INDENTIFYING THE RESPONSIBLE COUNTIRIES</h2>
     </div>
    <div id=bodyText>
-    <p >*placeholder*‘Wildlife’ means all fauna and flora. ‘Fauna’ are animals and birds, such as tigers and falcons, but also include fish. ‘Flora’ are plants, such as orchids or cacti, but also include timber and non-timber forest products, some of which are illegally traded at very significant levels.
-
-        'Crime', as far as ICCWC is concerned, refers to acts committed contrary to national laws and regulations intended to protect natural resources and to administer their management and use. This may start with the illicit exploitation of natural resources, such as the poaching of an elephant, uprooting of a rare orchid, unauthorized logging of trees, or unlicensed netting of sturgeons. It may also include subsequent acts, such as the processing of fauna and flora into products, their transportation, offer for sale, sale, possession, etc. It also includes the concealment and laundering of the financial benefits made out of these crimes. Some of these crimes will take place solely in the country of origin, whilst others will also occur in the country of destination, where live fauna or flora specimens, or their parts and derivatives, are finally consumed.</p>
+    <p >The Convention on International Trade in Endangered Species of Wild Fauna and Flora, or CITES for short, is an international treaty organization tasked with monitoring, reporting, and providing recommendations on the international species trade.This dataset contains records on every international import or export conducted with species from the CITES lists in 2016. It contains columns identifying the species, the import and export countries, and the amount and characteristics of the goods being traded (which range from live animals to skins and cadavers).</p>
    </div>
 
 <p id="chart">
@@ -22,7 +20,7 @@
 <div id="sankey">
 <script>
 	
-var units = "Widgets";
+var units = "Units";
 
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = 1000 - margin.left - margin.right,
@@ -57,11 +55,13 @@ d3.csv("Combined_export_import_1.csv", function(error, data) {
 
 
     data.forEach(function (d) {
+      if(d.value > 1000 ){
       graph.nodes.push({ "name": d.source });
       graph.nodes.push({ "name": d.target });
       graph.links.push({ "source": d.source,
                          "target": d.target,
                          "value": +d.value });
+      }
      });
 
      console.log("Done adding source-targets")
@@ -101,8 +101,12 @@ d3.csv("Combined_export_import_1.csv", function(error, data) {
 // add the link titles
   link.append("title")
         .text(function(d) {
-    		return d.source.name + " → " + 
-                d.target.name + "\n" + format(d.value); });
+        var tempNameSource=d.source.name;
+        var tempNameTarget=d.target.name;
+        var splitNameSource=tempNameSource.split( '_' );
+        var splitNameTarget=tempNameTarget.split( '_' );
+    		return splitNameSource[0] + " – " + 
+        splitNameTarget[0] + "\n" + format(d.value); });
 
     console.log("added link titles")
 
@@ -126,10 +130,11 @@ d3.csv("Combined_export_import_1.csv", function(error, data) {
       .attr("height", function(d) { return d.dy; })
       .attr("width", sankey.nodeWidth())
       .style("fill", function(d) { 
-		  return d.color = color(d.name.replace(/ .*/, "")); })
+        console.log("d" ,d);
+		    return d.color = color(d.name.split( '_')[0]); })
       .style("stroke", function(d) { 
-		  return d3.rgb(d.color).darker(2); })
-    .append("title")
+		    return d3.rgb(d.color).darker(100); })
+      .append("title")
       .text(function(d) { 
           return d.name + "\n" + format(d.value); });
           
@@ -142,8 +147,14 @@ d3.csv("Combined_export_import_1.csv", function(error, data) {
       .attr("dy", ".35em")
       .attr("text-anchor", "end")
       .attr("transform", null)
-      .text(function(d) { return d.name; })
-    .filter(function(d) { return d.x < width / 2; })
+      .text(function(d) { 
+        var tempName=d.name;
+        var splitName=tempName.split( '_' );
+        console.log("tempName=", tempName)
+        console.log("splitnameName=", splitName)
+        return splitName[0]; 
+      })
+      .filter(function(d) { return d.x < width / 2; })
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
 

@@ -40,7 +40,7 @@ h1 {
 #sankey{
 	margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 50%;
 }
 
 body {
@@ -60,7 +60,7 @@ body {
 	stroke-width: 0;
 }
 .node text {
-text-shadow: 0 1px 0 #fff;
+/* text-shadow: 0 1px 0 #fff; */
 }
 .link {
 	fill: none;
