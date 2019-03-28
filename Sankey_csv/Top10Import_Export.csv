@@ -1,0 +1,144 @@
+﻿source,target,value
+Netherlands_Export,,1
+Hong Kong_Export,Actinopteri,1
+Indonesia_Export,Actinopteri,131634
+Malaysia_Export,Actinopteri,98822
+Singapore_Export,Actinopteri,17193
+Hong Kong_Export,Amphibia,1
+United States of America_Export,Amphibia,2102
+China_Export,Aves,9
+Japan_Export,Aves,14
+Netherlands_Export,Aves,791
+Norway_Export,Aves,93
+Singapore_Export,Aves,274
+United States of America_Export,Aves,574
+Indonesia_Export,Coelacanthi,2
+United States of America_Export,Elasmobranchii,1
+China_Export,Mammalia,103
+Hong Kong_Export,Mammalia,12
+Indonesia_Export,Mammalia,1985.6
+Japan_Export,Mammalia,385.4
+Cambodia_Export,Mammalia,2599
+Malaysia_Export,Mammalia,114
+Netherlands_Export,Mammalia,74.336
+Norway_Export,Mammalia,201562
+Singapore_Export,Mammalia,39
+United States of America_Export,Mammalia,1955
+China_Export,Reptilia,24
+Hong Kong_Export,Reptilia,45518.07
+Japan_Export,Reptilia,2094.3
+Cambodia_Export,Reptilia,45746
+Malaysia_Export,Reptilia,18732
+Netherlands_Export,Reptilia,3
+Singapore_Export,Reptilia,45047.05
+United States of America_Export,Reptilia,44
+China_Export,Asterales,390676.729
+Hong Kong_Export,Asterales,2807.991
+Japan_Export,Asterales,41711.9
+Malaysia_Export,Asterales,849
+United States of America_Export,Asterales,1320
+United States of America_Export,Caryophyllales,41393
+United States of America_Export,Cycadales,29
+United States of America_Export,Euphorbiales,137
+China_Export,Fabales,11
+Japan_Export,Fabales,35.5
+Netherlands_Export,Fabales,1
+Singapore_Export,Fabales,1
+United States of America_Export,Fabales,412
+Netherlands_Export,Gentianales,1
+United States of America_Export,Liliales,75
+Netherlands_Export,Nepenthales,18
+China_Export,Orchidales,1895
+Indonesia_Export,Orchidales,5
+Japan_Export,Orchidales,490
+Malaysia_Export,Orchidales,11232
+Netherlands_Export,Orchidales,51447
+Singapore_Export,Orchidales,7
+United States of America_Export,Orchidales,6929
+Netherlands_Export,Pinales,10
+,Austria_Import,1
+Actinopteri,Belgium_Import,20
+Actinopteri,China_Import,184673
+Actinopteri,Germany_Import,19
+Actinopteri,France_Import,12
+Actinopteri,Hong Kong_Import,4673
+Actinopteri,Japan_Import,7778
+Actinopteri,Singapore_Import,3048
+Actinopteri,United States of America_Import,209
+Amphibia,United States of America_Import,1
+Aves,Austria_Import,53
+Aves,Belgium_Import,2
+Aves,China_Import,69.5
+Aves,Germany_Import,639
+Aves,France_Import,8
+Aves,Hong Kong_Import,12
+Aves,Japan_Import,58
+Aves,Netherlands_Import,2
+Aves,Singapore_Import,17
+Aves,United States of America_Import,265
+Coelacanthi,Japan_Import,1
+Elasmobranchii,United States of America_Import,19
+Mammalia,Austria_Import,122
+Mammalia,Belgium_Import,29.95
+Mammalia,China_Import,225
+Mammalia,Germany_Import,5168.45
+Mammalia,France_Import,5077.41
+Mammalia,Hong Kong_Import,1331.2
+Mammalia,Japan_Import,1329
+Mammalia,Netherlands_Import,35
+Mammalia,Singapore_Import,125
+Mammalia,United States of America_Import,15310.32
+Reptilia,Austria_Import,5
+Reptilia,Belgium_Import,5
+Reptilia,China_Import,89561
+Reptilia,Germany_Import,361
+Reptilia,France_Import,17085.86
+Reptilia,Hong Kong_Import,272818.93
+Reptilia,Japan_Import,23565.5
+Reptilia,Netherlands_Import,254
+Reptilia,Singapore_Import,81026
+Reptilia,United States of America_Import,11614.76
+Asterales,Austria_Import,331897.15
+Asterales,Germany_Import,61133.952
+Asterales,France_Import,5000
+Asterales,Hong Kong_Import,3108.45
+Asterales,Japan_Import,60358.24
+Asterales,Netherlands_Import,170
+Asterales,United States of America_Import,4001
+Caryophyllales,Germany_Import,375
+Caryophyllales,Japan_Import,1
+Caryophyllales,United States of America_Import,482
+Cycadales,Germany_Import,399
+Cycadales,France_Import,23
+Cycadales,Japan_Import,3264
+Cycadales,United States of America_Import,314
+Euphorbiales,Germany_Import,395
+Euphorbiales,France_Import,1
+Euphorbiales,Japan_Import,8
+Euphorbiales,United States of America_Import,75
+Fabales,Belgium_Import,1
+Fabales,China_Import,13
+Fabales,Germany_Import,11
+Fabales,France_Import,4
+Fabales,Hong Kong_Import,23
+Fabales,Japan_Import,245.5
+Fabales,Netherlands_Import,3
+Fabales,Singapore_Import,3
+Fabales,United States of America_Import,51590
+Gentianales,Japan_Import,6
+Liliales,Japan_Import,23
+Liliales,United States of America_Import,1430
+Nepenthales,Japan_Import,57
+Nepenthales,United States of America_Import,247
+Orchidales,Belgium_Import,607
+Orchidales,China_Import,65
+Orchidales,Germany_Import,9967
+Orchidales,France_Import,2058
+Orchidales,Hong Kong_Import,778
+Orchidales,Japan_Import,14453
+Orchidales,Singapore_Import,155
+Orchidales,United States of America_Import,14579.8
+Pinales,Belgium_Import,7500
+Pinales,Japan_Import,139
+Pinales,Netherlands_Import,30000
+Pinales,United States of America_Import,19
