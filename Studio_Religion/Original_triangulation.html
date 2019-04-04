@@ -32,7 +32,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var svg = d3.select("svg").on("touchmove mousemove", moved),
+var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
@@ -48,7 +48,7 @@ var triangle = svg.append("g")
   .selectAll("path")
   .data(voronoi.triangles(sites))
   .enter().append("path")
-    .call(redrawTriangle);
+    // .call(redrawTriangle);
 
 var link = svg.append("g")
     .attr("class", "links")
@@ -73,17 +73,17 @@ function moved() {
 function redraw() {
   var diagram = voronoi(sites);
   triangle = triangle.data(diagram.triangles()), triangle.exit().remove();
-  triangle = triangle.enter().append("path").merge(triangle).call(redrawTriangle);
+  triangle = triangle.enter().append("path").merge(triangle);
   link = link.data(diagram.links()), link.exit().remove();
   link = link.enter().append("line").merge(link).call(redrawLink);
   site = site.data(sites).call(redrawSite);
 }
 
-function redrawTriangle(triangle) {
-  triangle
-      .classed("primary", function(d) { return d[0] === sites[0] || d[1] === sites[0] || d[2] === sites[0]; })
-      .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
-}
+// function redrawTriangle(triangle) {
+//   triangle
+//       .classed("primary", function(d) { return d[0] === sites[0] || d[1] === sites[0] || d[2] === sites[0]; })
+//       .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+// }
 
 function redrawLink(link) {
   link

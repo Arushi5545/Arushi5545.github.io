@@ -1,6 +1,14 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>SANKEY Experiment</title>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Animal Trafficking</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="sankey.js"></script>
+</head>
 
 <body>
   <div id="cover" class="cover_content">
@@ -22,190 +30,312 @@
       and cadavers).</p>
   </div>
 
-  <div class="wrapper">
-      <div class="inner">Exporters</div>
-      <div class="inner">Class/Order</div>
-      <div class="inner">Importers</div>
-    </div> 
+  <!-- to add the youtube documentary -->
+  <!-- <div id="iframe">
+    <iframe width=100% height="360" src="https://www.youtube.com/embed/PQC3jp1udUg" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div> -->
+
+  <svg width="50%">
+    <g id="xAxis" transform="translate(0, 100)"></g>
+  </svg>
+
+  <!-- Labels for the sankey -->
+  <div class="labels">
+    <div class="inner">Exporters</div>
+    <div class="middle">Class/Order</div>
+    <div class="outer">Importers</div>
+  </div>
 
 
-  <p id="chart">
 
-    <link rel="stylesheet" href="style.css" />
+  <div class="viz-wrapper">
+    <div class="leftPane">
+      <p class="Left1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet lacus id dui tristique
+        vulputate. </p>
+      <p class="Left2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet lacus id dui tristique
+        vulputate. </p>
+      <p class="Left3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet lacus id dui tristique
+        vulputate. </p>
+    </div>
+    <div id="chart">
+    </div>
+    <div class="rightPane">
+      <p class="right1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet lacus id dui tristique
+        vulputate. </p>
+      <p class="right2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet lacus id dui tristique
+        vulputate. </p>
+      <p class="right3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet lacus id dui tristique
+        vulputate. </p>
+    </div>
+  </div>
+  <script>
 
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="sankey.js"></script>
-    <div id="sankey">
-      <script>
+ //to create a summary bar chart
+ d3.csv("TopExporters_v2.csv", function (data) {
+      console.log("Reading data", data);
 
-        var units = "Units";
-
-        //var myColors = ['#69c242', '#64bbe3', '#ffcc00', '#ff7300', '#cf2030']
-
-        var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-          width = 1000 - margin.left - margin.right,
-          height = 5000 - margin.top - margin.bottom;
-
-        var formatNumber = d3.format(",.0f"),    // zero decimal places
-          format = function (d) { return formatNumber(d) + " " + units; },
-
-        // var color = d3.scale.ordinal()
-        //   .range(myColors);
-        color = d3.scale.category20();
-
-
-        // append the svg canvas to the page
-        var svg = d3.select("#chart").append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
-
-        // Set the sankey diagram properties
-        var sankey = d3.sankey()
-          .nodeWidth(20)
-          .nodePadding(40)
-          .size([width, height]);
-
-        var path = sankey.link();
-
-        // load the data (using the timelyportfolio csv method)
-        //d3.csv("Sankey_Import_export_v3.csv", function (error, data) {
-        d3.csv("top10Import_exportcombined.csv", function (error, data) {
-          console.log("Reading data");
-
-          //set up graph in same style as original example but empty
-          graph = { "nodes": [], "links": [] };
+      //to splice data to top 10
+      spliceData = data.splice(0, 10);
+      console.log("splice data", spliceData);
 
 
-          data.forEach(function (d) {
-            if (d.value > 1000 && d.source != " " && d.targer != " ") {
-              graph.nodes.push({ "name": d.source });
-              graph.nodes.push({ "name": d.target });
-              graph.links.push({
-                "source": d.source,
-                "target": d.target,
-                "value": +d.value
-              });
-            }
+      //To set a range for the selected values
+      var xScale = d3.scale.linear()
+        .domain([44731.1, 392718.729])
+        .range([50, window.innerWidth - 100]);
+
+    // var svgWidth = 1000;
+    // var svgHeight = 300;
+    var barPadding = 10;
+
+    var svg = d3.select('svg')
+      .attr("width", svgWidth)
+      .attr("height", svgHeight)
+      .attr("class", "bar-chart");
+      
+      var barWidth = (svgWidth / 10);
+
+    var barChart = svg.selectAll("rect")
+    .data(spliceData)
+    .enter()
+    .append("rect")
+    // .attr("y", function(d) {
+    //     return svgHeight - d
+    // })
+    .attr("height", 20)
+    .attr("opacity", 0.1)
+    .attr("width", function (d, i) {
+         var barWidth = spliceData[i].quantity ;
+         console.log("spliceData[i].quantity", spliceData[i].quantity)
+         return barWidth;
+    })
+    .attr("transform", function (d, i) {
+         var translate = [(barWidth * i)+barPadding, 0];
+         return "translate("+ translate +")";
+    });
+
+      // console.log("min", d3.min[spliceData.quantity]);
+
+      // //To set a range for the selected values
+      // var xScale = d3.scale.linear()
+      //   .domain([44731.1, 392718.729])
+      //   .range([50, window.innerWidth - 100]);
+
+      // var svg = d3.select("svg");
+
+      // var rect = svg.selectAll("rect")
+      //   .data(spliceData);
+
+      // rect.enter().append("rect")
+      //   .attr("x", 10)
+      //   .attr("y", 10)
+      //   .attr("height", 10)
+      //   .fill("red")
+      //   .attr("width", function (d) {
+      //     return spliceData.quantity;
+
+      //   });
+
+      // var axis = d3.axisBottom(xScale);
+      // d3.select("#xAxis").call(axis);
+
+    });
+
+    var units = "Units";
+
+    // var myColors = ['#69c242', '#64bbe3', '#ffcc00', '#ff7300', '#cf2030']
+    //     var myColors = ['#a6cee3',
+    // '#1f78b4',
+    // '#b2df8a',
+    // '#33a02c',
+    // '#fb9a99',
+    // '#e31a1c',
+    // '#fdbf6f',
+    // '#ff7f00',
+    // '#cab2d6',
+    // '#6a3d9a',
+    // '#ffff99']
+    var myColors = [
+      '#8dd3c7',
+      '#ffffb3',
+      '#bebada',
+      '#fb8072',
+      '#80b1d3',
+      '#fdb462',
+      '#b3de69',
+      '#fccde5',
+      '#d9d9d9',
+      '#bc80bd',
+      '#ccebc5'
+    ]
+
+    var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+      width = 800 - margin.left - margin.right,
+      height = 800 - margin.top - margin.bottom;
+
+    var formatNumber = d3.format(",.0f");    // zero decimal places
+    var format = function (d) { return formatNumber(d) + " " + units; };
+
+    var color = d3.scale.ordinal()
+      .range(myColors);
+    // var color = d3.scale.category20();
+
+
+    // append the svg canvas to the page
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Set the sankey diagram properties
+    var sankey = d3.sankey()
+      .nodeWidth(20)
+      .nodePadding(10)
+      .size([width, height]);
+    // .nodeAlign(d3.sankeyLeft);
+
+    var path = sankey.link();
+
+    // load the data (using the timelyportfolio csv method)
+    //d3.csv("Sankey_Import_export_v3.csv", function (error, data) {
+    d3.csv("top10Import_exportcombined.csv", function (error, data) {
+      console.log("Reading data");
+
+      //set up graph in same style as original example but empty
+      graph = { "nodes": [], "links": [] };
+
+
+      data.forEach(function (d) {
+        if (d.value > 5000 && d.source != " " && d.targer != " ") {
+          graph.nodes.push({ "name": d.source });
+          graph.nodes.push({ "name": d.target });
+          graph.links.push({
+            "source": d.source,
+            "target": d.target,
+            "value": +d.value
           });
+        }
+      });
 
-          console.log("Done adding source-targets")
-          // return only the distinct / unique nodes
-          graph.nodes = d3.keys(d3.nest()
-            .key(function (d) { return d.name; })
-            .map(graph.nodes));
+      console.log("Done adding source-targets")
+      // return only the distinct / unique nodes
+      graph.nodes = d3.keys(d3.nest()
+        .key(function (d) { return d.name; })
+        .map(graph.nodes));
 
-          console.log("Done mapping")
-          // loop through each link replacing the text with its index from node
-          graph.links.forEach(function (d, i) {
-            graph.links[i].source = graph.nodes.indexOf(graph.links[i].source);
-            graph.links[i].target = graph.nodes.indexOf(graph.links[i].target);
-          });
+      console.log("Done mapping")
+      // loop through each link replacing the text with its index from node
+      graph.links.forEach(function (d, i) {
+        graph.links[i].source = graph.nodes.indexOf(graph.links[i].source);
+        graph.links[i].target = graph.nodes.indexOf(graph.links[i].target);
+      });
 
-          console.log("Done linking")
-          //now loop through each nodes to make nodes an array of objects
-          // rather than an array of strings
-          graph.nodes.forEach(function (d, i) {
-            graph.nodes[i] = { "name": d };
-          });
+      console.log("Done linking")
+      //now loop through each nodes to make nodes an array of objects
+      // rather than an array of strings
+      graph.nodes.forEach(function (d, i) {
+        graph.nodes[i] = { "name": d };
+      });
 
-          sankey
-            .nodes(graph.nodes)
-            .links(graph.links)
-            .layout(32);
+      sankey
+        .nodes(graph.nodes)
+        .links(graph.links)
+        .layout(32);
 
-          // add in the links
-          var link = svg.append("g").selectAll(".link")
-            .data(graph.links)
-            .enter().append("path")
-            .attr("class", "link")
-            .attr("d", path)
-            .style("stroke-width", function (d) { return Math.max(1, d.dy); })
-            .sort(function (a, b) { return b.dy - a.dy; });
+      // add in the links
+      var link = svg.append("g").selectAll(".link")
+        .data(graph.links)
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", path)
+        .style("stroke-width", function (d) { return Math.max(1, d.dy); })
+        .sort(function (a, b) { return b.dy - a.dy; });
 
-          // add the link titles
-          link.append("title")
-            .text(function (d) {
-              var tempNameSource = d.source.name;
-              var tempNameTarget = d.target.name;
-              var splitNameSource = tempNameSource.split('_');
-              var splitNameTarget = tempNameTarget.split('_');
-              return splitNameSource[0] + " – " +
-                splitNameTarget[0] + "\n" + format(d.value);
-            });
-
-          console.log("added link titles")
-
-          // add in the nodes
-          var node = svg.append("g").selectAll(".node")
-            .data(graph.nodes)
-            .enter().append("g")
-            .attr("class", "node")
-            .attr("transform", function (d) {
-              return "translate(" + d.x + "," + d.y + ")";
-            })
-            .call(d3.behavior.drag()
-              .origin(function (d) { return d; })
-              .on("dragstart", function () {
-                this.parentNode.appendChild(this);
-              })
-              .on("drag", dragmove));
-
-          console.log("added in nodes")
-
-          // add the rectangles for the nodes
-          node.append("rect")
-            .attr("height", function (d) { return d.dy; })
-            .attr("width", sankey.nodeWidth())
-            .style("fill", function (d) {
-              console.log("d", d);
-              return d.color = color(d.name.split('_')[0]);
-            })
-            .style("stroke", function (d) {
-              return d3.rgb(d.color).darker(100);
-            })
-            .append("title")
-            .text(function (d) {
-              return d.name + "\n" + format(d.value);
-            });
-
-          console.log("Appended rectanlges")
-
-          // add in the title for the nodes
-          node.append("text")
-            .attr("x", -6)
-            .attr("y", function (d) { return d.dy / 2; })
-            .attr("dy", ".35em")
-            .attr("text-anchor", "end")
-            .attr("transform", null)
-            .text(function (d) {
-              var tempName = d.name;
-              var splitName = tempName.split('_');
-              console.log("tempName=", tempName)
-              console.log("splitnameName=", splitName)
-              return splitName[0];
-            })
-            .filter(function (d) { return d.x < width / 2; })
-            .attr("x", 6 + sankey.nodeWidth())
-            .attr("text-anchor", "start");
-
-          console.log("Added node titles")
-
-          // the function for moving the nodes
-          function dragmove(d) {
-            d3.select(this).attr("transform",
-              "translate(" + d.x + "," + (
-                d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
-              ) + ")");
-            sankey.relayout();
-            link.attr("d", path);
-          }
+      // add the link titles
+      link.append("title")
+        .text(function (d) {
+          var tempNameSource = d.source.name;
+          var tempNameTarget = d.target.name;
+          var splitNameSource = tempNameSource.split('_');
+          var splitNameTarget = tempNameTarget.split('_');
+          return splitNameSource[0] + " – " +
+            splitNameTarget[0] + "\n" + format(d.value);
         });
 
-      </script>
-    </div>
+      console.log("added link titles")
+
+      // add in the nodes
+      var node = svg.append("g").selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function (d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+        .call(d3.behavior.drag()
+          .origin(function (d) { return d; })
+          .on("dragstart", function () {
+            this.parentNode.appendChild(this);
+          })
+          .on("drag", dragmove));
+
+      console.log("added in nodes")
+
+      // add the rectangles for the nodes
+      node.append("rect")
+        .attr("height", function (d) {
+          return d.dy;
+        })
+        .attr("width", sankey.nodeWidth())
+        .style("fill", function (d) {
+          console.log("d", d);
+          return d.color = color(d.name.split('_')[0]);
+        })
+        .style("stroke", function (d) {
+          return d3.rgb(d.color).darker(100);
+        })
+        .append("title")
+        .text(function (d) {
+          return d.name + "\n" + format(d.value);
+        });
+
+      console.log("Appended rectanlges")
+
+      // add in the title for the nodes
+      node.append("text")
+        .attr("x", -6)
+        .attr("y", function (d) { return d.dy / 2; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "end")
+        .attr("transform", null)
+        .text(function (d) {
+          var tempName = d.name;
+          var splitName = tempName.split('_');
+          console.log("tempName=", tempName)
+          console.log("splitnameName=", splitName)
+          return splitName[0];
+        })
+        .filter(function (d) { return d.x < width / 2; })
+        .attr("x", 6 + sankey.nodeWidth())
+        .attr("text-anchor", "start");
+
+      console.log("Added node titles")
+
+      // the function for moving the nodes
+      function dragmove(d) {
+        d3.select(this).attr("transform",
+          "translate(" + d.x + "," + (
+            d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+          ) + ")");
+        sankey.relayout();
+        link.attr("d", path);
+      }
+    });
+
+  </script>
+
 </body>
 
 </html>

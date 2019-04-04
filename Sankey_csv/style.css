@@ -37,10 +37,21 @@ h1 {
   font-size: 17px;
 }
 
+#rightInformationPane {
+	width: 200;
+	height: 300;
+	padding: 12px 16px; 
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+	text-align: left;
+}
 
 .wrapper {
   /* border: 1px solid red; */
-  display: flex;
+	width: 50%; 
+	margin-left: auto;
+  margin-right: auto;
+	display: flex;
 	flex-direction: row;
 	padding: 12px 16px; 
 	font-family: 'Nunito Sans', sans-serif;
@@ -48,32 +59,59 @@ h1 {
 	text-align: left;
 }
 
-.inner {
-  /* border: 1px solid blue; */
-  flex-grow: 1;
-	width: 33.3%;
-	padding: 12px 16px; 
+.labels{
+	padding: 40px 0px 0px 0px; 
+
+	font-weight: bold;
 	font-family: 'Nunito Sans', sans-serif;
 	font-size: 14px;
+	display: flex;
+	flex-direction: row;
+	width: 54%;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+.inner{
+	flex-grow: 1;
+  width: 33.3%;
 	text-align: left;
 }
 
-#sankey{
+.middle{
+	flex-grow: 1;
+  width: 33.3%;
+	text-align: center;
+}
+
+.outer{
+	flex-grow: 1;
+  width: 33.3%;
+	text-align: right;
+}
+
+#iframe
+{
+	width: 50%; 
+	margin-left: auto;
+  margin-right: auto;
+	/* padding: 12px 16px;  */
+}
+
+
+/* #sankey{
 	margin-left: auto;
   margin-right: auto;
   width: 30%;
-}
+} */
 
-body {
+#body {
 	padding: 10px;
 	min-width: 600px;
 	max-width: 1200px;
 	margin: auto;
 }
-#chart {
-	height: 500px;
-	font: 13px sans-serif;
-}
+
 
 .node rect {
 	fill-opacity: .9;
@@ -83,11 +121,8 @@ body {
 .node text {
 /* text-shadow: 0 1px 0 #fff; */
 }
-.link {
-	fill: none;
-	stroke: rgb(174, 184, 190);
-	stroke-opacity: .2;
-}
+
+
 
 svg {
   font: 12px sans-serif;
@@ -106,7 +141,7 @@ svg {
 
 .link {
   fill: none;
-  stroke: rgb(184, 187, 212);
+	stroke: rgb(220, 227, 241);
   stroke-opacity: .5;
 }
 
@@ -115,3 +150,62 @@ svg {
 }
 
 
+
+
+.viz-wrapper{
+	display: flex;  
+	width: 100%; 
+	margin-left: auto;
+  margin-right: auto;
+  flex-flow: row wrap;
+  font-weight: normal;
+	text-align: left;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 12px;
+	text-align: left;
+}
+
+.viz-wrapper > * {
+  padding: 20px;
+  flex: 1 2%;
+}
+
+.leftPane{
+
+	width: 15%;
+}
+
+.rightPane {
+	
+	width: 15%;
+}
+
+.chart {
+	
+	width: 30%;
+}
+
+.Left3 {
+	margin-top: 350px;
+}
+
+.Left1 {
+	margin-top: 100px;
+}
+
+.Left2 {
+	margin-top: 200px;
+}
+
+.right2 {
+	margin-top: 100px;
+}
+
+.right3 {
+	margin-top: 200px;
+}
+
+
+.bar-chart {
+	background-color: #C7D9D9;
+}

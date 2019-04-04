@@ -1,8 +1,8 @@
 var width = window.innerWidth;
 var height = 700;
 
-d3.csv("All_Places_of_Worship_test.csv", function(data){
-//d3.csv("New_York_data.csv", function(data){
+// d3.csv("All_Places_of_Worship_test.csv", function(data){
+d3.csv("New_York_data.csv", function(data){
 //console.log("csv:", data);
 //console.log("read csv", data);
 

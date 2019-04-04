@@ -3,31 +3,33 @@ var groupedReligion;
 var width = window.clientWidth;
 var height = window.clientHeight;
 //upload data set
-// d3.csv("New_York_data.csv", function (data) {
-d3.csv("All_Places_of_Worship_final.csv", function (data) {
+//d3.csv("New_York_data.csv", function (data) {
+d3.csv("All_NewYork.csv", function (data) {
+// d3.csv("All_Places_of_Worship_final.csv", function (data) {
 
   //use mercator map projection to map X, Y points
   var projection = d3.geoMercator()
-    .scale(600000)
-    // .translate([2000, 4000])
+    .scale(100000)
+    .translate([300, 2000])
     //new york
-    // .center([-74.0060, 40.7128]);
-    //salt lake city
-    .center([40, 60]);
+    .center([-73.964835, 40.783281]);
+  //salt lake city
+  // .center([40, 60]);
 
   //to add projected X Y in the dataset
   data.forEach(function (d) {
     d.XProjection = projection([d.X, d.Y])[0]
     d.YProjection = projection([d.X, d.Y])[1]
+    // if(d.XProjection== 213.66519415499351){
+    //   console.log("outlier", d.NAME)
+    // }
   });
-
-  //   return d3.nest().key(function(d) {
-  //     return d.CITY;
-  // }).key(function(d) {
-  //     return d.SUBTYPE;
-  // }).entries(data);
-
-  //console.log("before grouping", data);
+  
+  // //to create nested groups first by city then by subtype
+  // var GroupedCityReligion = d3.nest()
+  //   .key(function (d) { return d.CITY; })
+  //   .key(function (d) { return d.SUBTYPE; })
+  //   .entries(data);
 
   //to group the data by religion
   var groupedReligion = d3.nest()
@@ -36,7 +38,7 @@ d3.csv("All_Places_of_Worship_final.csv", function (data) {
     })
     .entries(data);
   //console.log(groupedReligion);
-  //console.log("after grouping INSIDE", groupedReligion);
+  console.log("after grouping INSIDE", groupedReligion);
 
 
   //To access all groups within Grouped Religion
@@ -56,14 +58,13 @@ d3.csv("All_Places_of_Worship_final.csv", function (data) {
       //select svg component
       sites.push([dd.XProjection, dd.YProjection])
     });
-    // console.log(subtype,sites);
+    console.log(subtype, sites);
     var svg = d3.select("svg")
 
 
     width = +svg.attr("width")
     height = +svg.attr("height");
 
-    // var sites = ([gdata[i].XProjection, gdata[i].YProjection]);
 
     //calling vernoi function
     var voronoi = d3.voronoi();
@@ -105,30 +106,44 @@ d3.csv("All_Places_of_Worship_final.csv", function (data) {
         else { return "black" }
         ;
       })
-      .attr("r", 7)
+      .attr("r", 2)
       .call(redrawSite);
 
-    //to redraw 
-    // function moved() {
-    //   sites[0] = d3.mouse(this);
-    //   redraw();
-    // }
+    // //to add tooltips to  the points
+    // d3.selectAll(site)
+    //       .on("click", function(d) {
+    //           console.log(d);
+    //       })
+    //       .on("mousemove", function(d) {
+    //           var mouse = d3.mouse(document.body);
+    //           d3.select("#tooltip")
+    //               .style("display", "block")
+    //               .html("<h1>" + d.NAME + "</h1>")
+    //               .html("<h1>" + d.CITY + "</h1>")
+    //               .style("left", mouse[0] + "px")
+    //               .style("top", mouse[1] - 50 + "px");
+    //       })
+    //       .on("mouseout", function(d) {
+    //           d3.select("#tooltip")
+    //               .style("display", "none")
+    //       });
+
 
     //draws the triangulation
     function redraw() {
       var diagram = voronoi(sites);
       triangle = triangle.data(diagram.triangles()), triangle.exit().remove();
-      triangle = triangle.enter().append("path").merge(triangle).call(redrawTriangle);
+      triangle = triangle.enter().append("path").merge(triangle);
       link = link.data(diagram.links()), link.exit().remove();
       link = link.enter().append("line").merge(link).call(redrawLink);
       site = site.data(sites).call(redrawSite);
     }
 
-    function redrawTriangle(triangle) {
-      triangle
-        .classed("primary", function (d) { return d[0] === sites[0] || d[1] === sites[0] || d[2] === sites[0]; })
-        .attr("d", function (d) { return "M" + d.join("L") + "Z"; });
-    }
+    // function redrawTriangle(triangle) {
+    //   triangle
+    //     .classed("primary", function (d) { return d[0] === sites[0] || d[1] === sites[0] || d[2] === sites[0]; })
+    //     .attr("d", function (d) { return "M" + d.join("L") + "Z"; });
+    // }
 
     function redrawLink(link) {
       link
@@ -137,7 +152,9 @@ d3.csv("All_Places_of_Worship_final.csv", function (data) {
         .attr("y1", function (d) { return d.source[1]; })
         .attr("x2", function (d) { return d.target[0]; })
         .attr("y2", function (d) { return d.target[1]; })
-        .attr("stroke-width", 4)
+        .attr("stroke-width", 1)
+        .attr("opacity", 8)
+        // .attr("style", "mix-blend-mode : multiply")
         .attr("stroke", function (d) {
           if (religion === "CHRISTIAN") {
             //console.log("I am CHRISTIAN");
