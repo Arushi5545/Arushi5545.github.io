@@ -70,7 +70,6 @@
     </div>
   </div>
   <script>
-
  //to create a summary bar chart
  d3.csv("TopExporters_v2.csv", function (data) {
       console.log("Reading data", data);
@@ -79,14 +78,8 @@
       spliceData = data.splice(0, 10);
       console.log("splice data", spliceData);
 
-
-      //To set a range for the selected values
-      var xScale = d3.scale.linear()
-        .domain([44731.1, 392718.729])
-        .range([50, window.innerWidth - 100]);
-
-    // var svgWidth = 1000;
-    // var svgHeight = 300;
+    var svgWidth = 1000;
+    var svgHeight = 300;
     var barPadding = 10;
 
     var svg = d3.select('svg')
