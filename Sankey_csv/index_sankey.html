@@ -100,12 +100,12 @@
 
     d3.csv("TopImporters_v2.csv", function (data1) {
       console.log("Reading data", data1);
-      data.forEach(function (dd) {
+      data1.forEach(function (dd) {
         dd.quantity = parseFloat(dd.quantity);
       });
 
       //to splice data to top 10
-      spliceDataImporters = data.splice(0, 10);
+      spliceDataImporters = data1.splice(0, 10);
       // console.log("splice data", spliceData);
       barChart(data1, spliceDataImporters);
 
@@ -113,8 +113,6 @@
 
 
     function barChart(d, spliceData) {
-
-
 
       var svg = d3.select('svg')
         .attr("width", svgWidth)
@@ -159,6 +157,9 @@
         .attr("x", function (d, i) {
           var NewBarWidth = NewBarWidth + barWidth;
           var translate = [(NewBarWidth) + barPadding, 0];
+          console.log("Barwidth", barWidth)
+          console.log("Barpadding", barPadding)
+
           return "translate(" + translate + ")";
         });
 
