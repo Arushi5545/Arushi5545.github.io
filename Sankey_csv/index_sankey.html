@@ -5,14 +5,15 @@
   <meta charset="utf-8">
   <title>Animal Trafficking</title>
   <link rel="stylesheet" href="style.css" />
-
+  <link href="https://fonts.googleapis.com/css?family=Suez+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Suez+One" rel="stylesheet">
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="sankey.js"></script>
 </head>
 
 <body>
   <div id="cover" class="cover_content">
-    <h1> Hunting the hunters</h1>
+    <h1> Hunting the Hunters</h1>
     <h2>TOP TEN COUNTIRIES TRAFFICKING ENDANGERED SPECIES</h2>
   </div>
   <div id=bodyText>
@@ -28,19 +29,23 @@
       species from the CITES lists in 2016. It contains columns identifying the species, the import and export
       countries, and the amount and characteristics of the goods being traded (which range from live animals to skins
       and cadavers).</p>
+
   </div>
 
-  <!-- to add the youtube documentary -->
-  <!-- <div id="iframe">
+  <!-- to add the youtube documentary 
+  <div id="iframe">
     <iframe width=100% height="360" src="https://www.youtube.com/embed/PQC3jp1udUg" frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div> -->
 
-  <p class="labels">Top 10 exporters </p>
-
+  <p class="labels">Top 10 Exporters </p>
   <svg width="50%">
     <g id="xAxis" transform="translate(0, 100)"></g>
   </svg>
+
+  <p class="labels">Top 10 Importers </p>
+
+
 
   <!-- Labels for the sankey -->
   <div class="labels">
@@ -71,71 +76,94 @@
         vulputate. </p>
     </div>
   </div>
+
+  <div id="footer">
+    Made by Arushi Singh for Visualization Technologies taught by Prof. Dave Landry.
+  </div>
   <script>
- //to create a summary bar chart
- d3.csv("TopExporters_v2.csv", function (data) {
-      console.log("Reading data", data);
-
-      //to splice data to top 10
-      spliceData = data.splice(0, 10);
-      console.log("splice data", spliceData);
-
-    var svgWidth = 1000;
+    //globals
+    var svgWidth = window - width;
     var svgHeight = 300;
     var barPadding = 10;
 
-    var svg = d3.select('svg')
-      .attr("width", svgWidth)
-      .attr("height", svgHeight)
-      .attr("class", "bar-chart");
-      
+    //to create a summary bar chart
+    d3.csv("TopExporters_v2.csv", function (data) {
+      console.log("Reading data", data);
+      data.forEach(function (d) {
+        d.quantity = parseFloat(d.quantity);
+      });
+      //to splice data to top 10
+      spliceDataExporters = data.splice(0, 10);
+      // console.log("splice data", spliceData);
+      barChart(data, spliceDataExporters);
+    });
+
+    d3.csv("TopImporters_v2.csv", function (data1) {
+      console.log("Reading data", data1);
+      data.forEach(function (dd) {
+        dd.quantity = parseFloat(dd.quantity);
+      });
+
+      //to splice data to top 10
+      spliceDataImporters = data.splice(0, 10);
+      // console.log("splice data", spliceData);
+      barChart(data1, spliceDataImporters);
+
+    });
+
+
+    function barChart(d, spliceData) {
+
+
+
+      var svg = d3.select('svg')
+        .attr("width", svgWidth)
+        .attr("height", svgHeight)
+        .attr("class", "bar-chart");
+
       var barWidth = (svgWidth / 10);
+      //d3 stack gives the width of each bar graph
+      var stack = d3.layout.stack()
+        .x(function () { return "top"; })
+        .y(function (d) { return d.quantity; });
+      var stackData = stack(spliceData.map(d => [d])).map(d => d[0]);
+      stackData.forEach(function (d) {
+        d.x = d.y0;
+        delete d.y0;
+        d.width = d.y;
+        delete d.y;
+      });
 
-    var barChart = svg.selectAll("rect")
-    .data(spliceData)
-    .enter()
-    .append("rect")
-    // .attr("y", function(d) {
-    //     return svgHeight - d
-    // })
-    .attr("height", 20)
-    .attr("opacity", 0.1)
-    .attr("width", function (d, i) {
-         var barWidth = spliceData[i].quantity ;
-         console.log("spliceData[i].quantity", spliceData[i].quantity)
-         return barWidth;
-    })
-    .attr("transform", function (d, i) {
-         var translate = [(barWidth * i)+barPadding, 0];
-         return "translate("+ translate +")";
-    });
+      console.log("stackData", stackData);
+      var NewBarWidth = 0;
 
-      // console.log("min", d3.min[spliceData.quantity]);
+      //Set up scales
+      var xScale = d3.scale.linear()
+        .domain([44731.1, 392718.729])
+        .range([50, 500]);
 
-      // //To set a range for the selected values
-      // var xScale = d3.scale.linear()
-      //   .domain([44731.1, 392718.729])
-      //   .range([50, window.innerWidth - 100]);
+      var barChart = svg.selectAll("rect")
+        .data(spliceData)
+        .enter()
+        .append("rect")
+        .attr("y", function (d) {
+          return 10;
+        })
+        .attr("height", 20)
+        .attr("opacity", 0.1)
+        .attr("width", function (d, i) {
+          var barWidth = xScale(d.width);
+          console.log("barwidth", d.width)
+          return barWidth;
+        })
+        .attr("x", function (d, i) {
+          var NewBarWidth = NewBarWidth + barWidth;
+          var translate = [(NewBarWidth) + barPadding, 0];
+          return "translate(" + translate + ")";
+        });
 
-      // var svg = d3.select("svg");
 
-      // var rect = svg.selectAll("rect")
-      //   .data(spliceData);
-
-      // rect.enter().append("rect")
-      //   .attr("x", 10)
-      //   .attr("y", 10)
-      //   .attr("height", 10)
-      //   .fill("red")
-      //   .attr("width", function (d) {
-      //     return spliceData.quantity;
-
-      //   });
-
-      // var axis = d3.axisBottom(xScale);
-      // d3.select("#xAxis").call(axis);
-
-    });
+    }
 
     var units = "Units";
 
@@ -151,18 +179,42 @@
     // '#cab2d6',
     // '#6a3d9a',
     // '#ffff99']
+    // var myColors = [
+    //   '#8dd3c7',
+    //   '#ffffb3',
+    //   '#bebada',
+    //   '#fb8072',
+    //   '#80b1d3',
+    //   '#fdb462',
+    //   '#b3de69',
+    //   '#fccde5',
+    //   '#d9d9d9',
+    //   '#bc80bd',
+    //   '#ccebc5'
+    // ]
+
     var myColors = [
-      '#8dd3c7',
-      '#ffffb3',
-      '#bebada',
-      '#fb8072',
-      '#80b1d3',
-      '#fdb462',
-      '#b3de69',
-      '#fccde5',
-      '#d9d9d9',
-      '#bc80bd',
-      '#ccebc5'
+      '#A3816A',
+      '#D2C8C8',
+      '#A2A8D3',
+      '#F6E0B3',
+      '#DD6B4D',
+      '#556FB5',
+      '#6A43B7',
+      '#480031',
+      '#FFA35C',
+      '#774181',
+      '#E6B1C6',
+      '#F9BC61',
+      '#E4508F',
+      '#9FD2C7',
+      '#305F72',
+      '#4692AE',
+      '#A7003F',
+      '#97BF3B',
+      '#E9EEC8',
+      '#404370',
+      '#5D5D5A'
     ]
 
     var margin = { top: 10, right: 10, bottom: 10, left: 10 },
