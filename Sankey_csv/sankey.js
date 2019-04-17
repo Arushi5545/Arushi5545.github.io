@@ -112,10 +112,13 @@ d3.sankey = function() {
         nextNodes,
         x = 0;
 
+    var offsetNames = ["Fabales", "Pinales"];
+    console.log(nodes);
     while (remainingNodes.length) {
       nextNodes = [];
       remainingNodes.forEach(function(node) {
-        node.x = x;
+        var offset = offsetNames.indexOf(node.name) >= 0 ? 1 : 0;
+        node.x = x + offset;
         node.dx = nodeWidth;
         node.sourceLinks.forEach(function(link) {
           nextNodes.push(link.target);
@@ -125,7 +128,6 @@ d3.sankey = function() {
       ++x;
     }
 
-    //
     moveSinksRight(x);
     scaleNodeBreadths((width - nodeWidth) / (x - 1));
   }
@@ -139,9 +141,11 @@ d3.sankey = function() {
   }
 
   function moveSinksRight(x) {
+    var offsetNames = ["Caryophyllales"];
     nodes.forEach(function(node) {
       if (!node.sourceLinks.length) {
-        node.x = x - 1;
+        var offset = offsetNames.indexOf(node.name) >= 0 ? 1 : 0;
+        node.x = x - 1 - offset;
       }
     });
   }
