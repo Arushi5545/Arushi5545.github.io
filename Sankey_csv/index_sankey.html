@@ -31,6 +31,7 @@
       and cadavers).</p>
 
   </div>
+  <div id="tooltip"></div>
 
   <!-- to add the youtube documentary 
   <div id="iframe">
@@ -232,6 +233,11 @@
         });
 
 
+
+//to add labels
+
+
+
         //to set up tool tip
         d3.selectAll("rect")
         .on("click", function (d) {
@@ -241,9 +247,9 @@
           var mouse = d3.mouse(document.body);
           d3.select("#tooltip")
             .style("display", "block")
-            .html("<h1>" + d.name + "</h1>")
+            .html("<pr>" + d.name + "</pr>")
             .style("left", mouse[0] + "px")
-            .style("top", mouse[1] - 50 + "px");
+            .style("top", mouse[1] -50 + "px");
         })
         .on("mouseout", function (d) {
           d3.select("#tooltip")
