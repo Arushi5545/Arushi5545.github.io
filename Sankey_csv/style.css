@@ -267,10 +267,8 @@ svg {
 
 
 
-#toolTip{
-	padding: 20px ;
-	fill: rgb(210, 200, 200);
-	opacity: 0.5;
+#tooltip {
+	border: 1px solid black;
+	display: none;
+	position: absolute;
 }
-
-
