@@ -223,8 +223,9 @@ svg {
 	top: 130px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(124, 138, 155);
-  stroke-opacity: .1;
+	border-color: rgb(162, 168, 211);
+	/* border-color: rgb(124, 138, 155); */
+  /* stroke-opacity: .1; */
 }
 
 .Left2 {
@@ -232,8 +233,9 @@ svg {
 	margin-top: 270px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(124, 138, 155);
-  stroke-opacity: .1;
+	border-color: rgb(221, 107, 77);
+	/* border-color: rgb(124, 138, 155);
+  stroke-opacity: .1; */
 	
 }
 
@@ -242,25 +244,26 @@ svg {
 	top: 550px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(124, 138, 155);
-  stroke-opacity: .1;
+	border-color: rgb(163, 129, 106);
+	/* border-color: rgb(124, 138, 155);
+  stroke-opacity: .1; */
 }
 
 .right1 {
 	position: absolute;
-	margin-top: 70px;
+	margin-top: 90px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(124, 138, 155);
+	border-color: rgb(163, 129, 106);
   stroke-opacity: .1;
 }
 
 .right2 {
 	position: absolute;
-	margin-top: 220px;
+	margin-top: 240px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(124, 138, 155);
+	border-color: rgb(255, 163, 92);
   stroke-opacity: .1;
 }
 
@@ -269,7 +272,7 @@ svg {
 	margin-top: 460px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(124, 138, 155);
+	border-color: rgb(85, 111, 181);
   stroke-opacity: .1;
 }
 
