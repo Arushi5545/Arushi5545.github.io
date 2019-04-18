@@ -37,7 +37,7 @@
 
   </div>
   <div id="tooltip"></div>
-  <div id="tooltip1"></div>
+  <div id="tooltip_barchart"></div>
   
 
   <!-- to add the youtube documentary  -->
@@ -251,7 +251,7 @@
         })
         .on("mousemove", function (d) {
           var mouse = d3.mouse(document.body);
-          d3.select("#tooltip1")
+          d3.select("#tooltip_barchart")
             .style("display", "block")
             .html("<div class='tooltip-labels'>" + d.name + "<br>" + d.quantity + " Units")
             // .html("<pr>" + d.quantity + "</pr>")
@@ -259,7 +259,7 @@
             .style("top", mouse[1] - 40 + "px");
         })
         .on("mouseout", function (d) {
-          d3.select("#tooltip")
+          d3.select("#tooltip_barchart")
             .style("display", "none");
         });
 
