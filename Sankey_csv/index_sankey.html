@@ -17,27 +17,36 @@
     <h2>TOP COUNTIRIES TRAFFICKING ENDANGERED SPECIES</h2>
   </div>
   <div id=bodyText>
-    <p>Here are the top ten exporting and importing countries which trade of most protected species accoring to the
-      CITES.
+    <p>Even though CITES recommends ethical guidelines for countries to follow, many do not adhere to these rules and continue to use endangered animals and plants for commercial products, medicinal purposes or even as exotic meat. For instance, in her book Poached,  Rachel Love Nuwer, highlights how easy it is to find rhino horns in Chinese black markets or pangolin meat if you know the right people.
+
       <br><br>
-      The Convention on International Trade in Endangered Species of Wild Fauna and Flora, or CITES for short, is an
-      international treaty organization tasked with monitoring, reporting, and providing recommendations on the
-      international species trade.
+      This is a rather wicked problem to solve. There are poachers who hunt endangered species for money. They don’t care about the animal getting extinct or legal consequences because it is a highly profitable means of livelihood. There are buyers in the markets who can pay exorbitant prices for these animals. There are societies who believe in ancient traditions and superstitions like ‘grinding a rhino horn can prevent a hangover’ or ‘owning exotic pets are a show your opulence’ which always creates a market for smuggled goods. The perpetrators are not brought to justice because In some nations they are often protected by their corrupt elements in administration.
+
       <br><br>
-      This <a href="https://www.kaggle.com/cites/cites-wildlife-trade-database">dataset</a> contains records on every
-      international import or export conducted with
-      species from the CITES lists in 2016. It contains columns identifying the species, the import and export
-      countries, and the amount and characteristics of the goods being traded (which range from live animals to skins
-      and cadavers).</p>
+
+      Thankfully, there is systematic documentation now available in the public domain. However, it is not compiled in an easy-to-use manner for general public consumption. Therefore, I designed a data visualization to check which countries traffic the maximum number of animals and which ones import them for educational, medicinal, research, breeding and commercial purposes .
+      <br><br>
+      The <a href="https://www.kaggle.com/cites/cites-wildlife-trade-database">dataset</a>   I used contains records on every international import or export conducted with species from the CITES lists in 2016. It contains columns identifying the species, the import and export countries, and the amount and characteristics of the goods being traded (which range from live animals to skins and cadavers). 
+
+      
+      
+      <br><br>
+      If interested, please take a look at this talk by Rachel Love Nuwer whose book, Poached, Inside the dark world of wildlife trafficking, inspired me to explore this topic.
+
+    </p>
 
   </div>
   <div id="tooltip"></div>
+  <div id="tooltip1"></div>
+  
 
-  <!-- to add the youtube documentary 
+  <!-- to add the youtube documentary  -->
   <div id="iframe">
-    <iframe width=100% height="360" src="https://www.youtube.com/embed/PQC3jp1udUg" frameborder="0"
+    <iframe width="100% " height="400" src="https://www.youtube.com/embed/WFJtC_nxNCE" frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div> -->
+  </div>
+
+
 
   <p class="labelsTop10">Top 10 Exporters </p>
   <svg id="exports">
@@ -95,7 +104,7 @@
   </div>
 
   <div id="footer">
-    Made by Arushi Singh for Visualization Technologies taught by Prof. Dave Landry.
+    Designed by Arushi Singh for Visualization Technologies taught by Prof. Dave Landry.
   </div>
   <script>
     //globals
@@ -194,20 +203,6 @@
         .domain([0, max])
         .range([0, svgWidth]);
 
-//to add labels
-      var labels = svg.select("#labels").selectAll("text")
-        .data(stackData);
-
-      labels.enter().append("text")
-        .text(function (d) {
-          return d["name"];
-        })
-        .attr('y', function (d, i) {
-          return i * 12;
-        })
-        .attr('dy', 7)
-        .attr('x', 670);
-
       console.log("stackdata", stackData)
       // console.log("stackData.name ", stackData.name )
       var barChart = svg.selectAll("rect")
@@ -230,31 +225,51 @@
         .attr("x", function (d, i) {
           var barX = xScale(d.x);
           return barX;
-        });
+        })
+        .attr("opacity", 1);
 
 
 
-//to add labels
+      // //to add labels
+      // var labels = svg.select("#labels").selectAll("text")
+      //   .data(barData);
 
+      // labels.enter().append("text")
+      //   .text(function (d) {
+      //     return d.name;
+      //   })
+      //   .attr('x', function (d, i) {
+      //     return i * 12;
+      //   })
+      //   .attr('dy', 7)
+      //   .attr('x', 670);
 
-
-        //to set up tool tip
-        d3.selectAll("rect")
+      //to set up tool tip
+      d3.selectAll("rect")
         .on("click", function (d) {
           console.log(d);
         })
         .on("mousemove", function (d) {
           var mouse = d3.mouse(document.body);
-          d3.select("#tooltip")
+          d3.select("#tooltip1")
             .style("display", "block")
-            .html("<div class='tooltip-title'>" + d.name + "<br>" + d.quantity )
+            .html("<div class='tooltip-labels'>" + d.name + "<br>" + d.quantity + " Units")
             // .html("<pr>" + d.quantity + "</pr>")
-            .style("left", mouse[0] + 20 + "px")
-            .style("top", mouse[1] - 50 + "px");
+            .style("left", mouse[0] - 50 + "px")
+            .style("top", mouse[1] - 40 + "px");
         })
         .on("mouseout", function (d) {
           d3.select("#tooltip")
-            .style("display", "none")
+            .style("display", "none");
+        });
+
+      //to have a selection
+      d3.selectAll("rect")
+        .on("mouseover", function () {
+          d3.select(this).attr("stroke", "black").attr("stroke-width", 1);
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("stroke", "none").attr("stroke-width", 0)
         });
 
 

@@ -166,11 +166,11 @@ svg {
 .link {
   fill: none;
 	stroke: rgb(56, 81, 112);
-  stroke-opacity: .4;
+  stroke-opacity: .1;
 }
 
 .link:hover {
-  stroke-opacity: .6;
+  stroke-opacity: .4;
 }
 
 
@@ -216,59 +216,87 @@ svg {
 	width: 30%;
 }
 
+
+
+.Left1 {
+	position: absolute;
+	top: 130px;
+	padding: 10px ;
+	border-style: solid;
+	border-color: rgb(124, 138, 155);
+  stroke-opacity: .1;
+}
+
+.Left2 {
+	position: absolute;
+	margin-top: 270px;
+	padding: 10px ;
+	border-style: solid;
+	border-color: rgb(124, 138, 155);
+  stroke-opacity: .1;
+	
+}
+
 .Left3 {
 	position: absolute;
 	top: 550px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(163, 129, 106);
-}
-
-.Left1 {
-	position: absolute;
-	top: 55px;
-	padding: 10px ;
-	border-style: solid;
-	border-color:rgb(162, 168, 211);
-}
-
-.Left2 {
-	position: absolute;
-	margin-top: 200px;
-	padding: 10px ;
-	border-style: solid;
-	border-color: rgb(221, 107, 77);
-	
+	border-color: rgb(124, 138, 155);
+  stroke-opacity: .1;
 }
 
 .right1 {
 	position: absolute;
-	margin-top: 5px;
+	margin-top: 70px;
 	padding: 10px ;
 	border-style: solid;
-	border-color:rgb(163, 129, 106);
+	border-color: rgb(124, 138, 155);
+  stroke-opacity: .1;
 }
 
 .right2 {
 	position: absolute;
-	margin-top: 175px;
+	margin-top: 220px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(255, 163, 92)
+	border-color: rgb(124, 138, 155);
+  stroke-opacity: .1;
 }
 
 .right3 {
 	position: absolute;
-	margin-top: 420px;
+	margin-top: 460px;
 	padding: 10px ;
 	border-style: solid;
-	border-color: rgb(85, 111, 181)
+	border-color: rgb(124, 138, 155);
+  stroke-opacity: .1;
 }
 
 
 
 #tooltip {
-	border: 1px solid black;
-	display: none;
-	position: absolute;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+	text-align: left;
+	display: inline-block;
+	background-color: rgb(75, 79, 84);
+        color: white;
+        text-align: center;
+        padding: 3px 0;
+        padding-left: 3px;
+        padding-right: 3px;
+        border-radius: 10px;
+        width: 200px;
+        border: 1px solid #fff;
+        pointer-events: none;
+        position: absolute;
+        /*z-index: 1;*/
+        display: none;
 }
+
+/* #tooltip-labels {
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+	text-align: left;
+} */
