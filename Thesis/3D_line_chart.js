@@ -9,7 +9,7 @@ var z = unpack(rows , 'Accelerometer.Z');
 // var c = unpack(rows , 'color');
 Plotly.newPlot('myDiv', [{
   type: 'scatter3d',
-  mode: 'lines',
+  mode: 'lines+markers',
   x: x,
   y: y,
   z: z,
@@ -22,6 +22,6 @@ Plotly.newPlot('myDiv', [{
     reversescale: false
   }
 }], {
-  height: 640
+  height: 600
 });
 });
