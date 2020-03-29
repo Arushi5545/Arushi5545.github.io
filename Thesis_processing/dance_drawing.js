@@ -6,10 +6,25 @@ var widthGrid = 300;
 var heightGrid = -300;
 let song;
 
+// Get data from a file
+function preload() {
+    console.log("Reading the files");
+    //data_file = loadTable("leftAnkle_whole.csv", "header");
+    data_file_la = loadTable('leftAnkle_whole.csv', 'csv', 'header');
+    data_file_ra = loadTable('rightAnkle_whole.csv', 'csv', 'header');
+    data_file_lw = loadTable('leftWrist_whole.csv', 'csv', 'header');
+    data_file_rw = loadTable('rightWrist_whole.csv', 'csv', 'header');
+    soundFormats('mp3', 'ogg');
+    song = loadSound('assets/Kathak_track.mp3');
+    //song = new p5.SoundFile('assets/Kathak_track.mp3', successCallBack(), errorCallBack(), whileLoadingCallBack())
+
+    // print(data_file);
+}
 
 function setup() {
     console.log("Setting up the canvas");
-    createCanvas(windowWidth, windowHeight, WEBGL); //WHEN YOU NEED TO USE P3D, CHECK IN THE DOCUMENTATION FOR DEPTH SORT, DEPTH TESTING
+    cvs = createCanvas(windowWidth, windowHeight, WEBGL); //WHEN YOU NEED TO USE P3D, CHECK IN THE DOCUMENTATION FOR DEPTH SORT, DEPTH TESTING
+    cvs.mousePressed(canvasPressed)
     //canvas.parent('sketch-holder-1');
     pixelDensity(displayDensity());
     text('test', 0, 0);
@@ -68,22 +83,6 @@ function canvasPressed() {
         song.play();
     }
   }
-
-
-// Get data from a file
-function preload() {
-    console.log("Reading the files");
-    //data_file = loadTable("leftAnkle_whole.csv", "header");
-    data_file_la = loadTable('leftAnkle_whole.csv', 'csv', 'header');
-    data_file_ra = loadTable('rightAnkle_whole.csv', 'csv', 'header');
-    data_file_lw = loadTable('leftWrist_whole.csv', 'csv', 'header');
-    data_file_rw = loadTable('rightWrist_whole.csv', 'csv', 'header');
-    soundFormats('mp3', 'ogg');
-    song = loadSound('assets/Kathak_track.mp3');
-    //song = new p5.SoundFile('assets/Kathak_track.mp3', successCallBack(), errorCallBack(), whileLoadingCallBack())
-
-    // print(data_file);
-}
 
 function successCallBack(){
     print("SOUND FILE IS READY");
