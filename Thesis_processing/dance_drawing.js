@@ -1,8 +1,10 @@
+//import p5 from "./p5";
+
 var data_file_la, data_file_ra, data_file_lw, data_file_rw;
 var POINT_SCALE = 50;
-
 var widthGrid = 300;
 var heightGrid = -300;
+let song;
 
 
 function setup() {
@@ -25,27 +27,27 @@ function draw() {
     push();
     //translate(width1/4, height1/4);
     translate(-widthGrid/4, -height/4);
-    text('left wrist', 0, 0);
+    //text('left wrist', 0, 0);
     //rect(width/4, height/4, 100, 100);
     drawConsecLines(data_file_lw, 255,0,0);
     // translate(3*width1/4, height1/4);
     translate(3*widthGrid/4, 0);
    
 
-    text('right wrist', 0, 0);
+    //text('right wrist', 0, 0);
 
     //rect(3*width/4, height/4, 100, 100);
     drawConsecLines(data_file_rw, 0,255,0);
   
     // translate(3 * width1 / 4, -height1 / 4);
     translate(0, -3*heightGrid/4);
-    text('left ankle', 0, 0);
+    //text('left ankle', 0, 0);
     //rect(3*width/4, -height/4, 100, 100);
     drawConsecLines(data_file_la, 0,0,255);
     
     // translate(-3 * width1 / 4, -height1 / 4);
     translate(-3*widthGrid/4, 0);
-    text('right ankle', 0, 0);
+    //text('right ankle', 0, 0);
     //rect(-3*width/4, -height/4, 100, 100);
     drawConsecLines(data_file_ra, 255,128,0);
     pop();
@@ -57,6 +59,16 @@ function mouseClicked() {
     noLoop();
 }
 
+function canvasPressed() {
+    console.log("sound playing");
+    if (song.isPlaying()) {
+      // .isPlaying() returns a boolean
+      song.stop();
+    } else {
+        song.play();
+    }
+  }
+
 
 // Get data from a file
 function preload() {
@@ -66,8 +78,26 @@ function preload() {
     data_file_ra = loadTable('rightAnkle_whole.csv', 'csv', 'header');
     data_file_lw = loadTable('leftWrist_whole.csv', 'csv', 'header');
     data_file_rw = loadTable('rightWrist_whole.csv', 'csv', 'header');
+    soundFormats('mp3', 'ogg');
+    song = loadSound('assets/Kathak_track.mp3');
+    //song = new p5.SoundFile('assets/Kathak_track.mp3', successCallBack(), errorCallBack(), whileLoadingCallBack())
+
     // print(data_file);
 }
+
+function successCallBack(){
+    print("SOUND FILE IS READY");
+}
+
+function errorCallBack(){
+    print("SOUND FILE FAILED");
+}
+
+function whileLoadingCallBack(){
+    print("LOADING ...");
+}
+
+
 
 
 function drawConsecLines(data_file, col_R, col_G, col_B) {
