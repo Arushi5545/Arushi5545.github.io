@@ -1,16 +1,17 @@
 var data_file_la, data_file_ra, data_file_lw, data_file_rw;
 var POINT_SCALE = 50;
 
-var widthGrid = 500;
-var heightGrid = 300;
+var widthGrid = 300;
+var heightGrid = -300;
 
 
 function setup() {
     console.log("Setting up the canvas");
-    createCanvas(windowWidth, windowHeight, P2D); //WHEN YOU NEED TO USE P3D, CHECK IN THE DOCUMENTATION FOR DEPTH SORT, DEPTH TESTING
+    createCanvas(windowWidth, windowHeight, WEBGL); //WHEN YOU NEED TO USE P3D, CHECK IN THE DOCUMENTATION FOR DEPTH SORT, DEPTH TESTING
     //canvas.parent('sketch-holder-1');
     pixelDensity(displayDensity());
-  
+    text('test', 0, 0);
+
     //int speed = 10;
     //preload();
     //test_print();
@@ -19,29 +20,34 @@ function setup() {
 
 function draw() {
     background(255);
-    translate(width/4,0)
+    textSize(32);
+    //translate(width/4,0)
     push();
     //translate(width1/4, height1/4);
-    translate(widthGrid/4, height/4);
+    translate(-widthGrid/4, -height/4);
+    text('left wrist', 0, 0);
     //rect(width/4, height/4, 100, 100);
-    drawConsecLines(data_file_la, 154,205,50);
-   
-  
+    drawConsecLines(data_file_lw, 255,0,0);
     // translate(3*width1/4, height1/4);
-    translate(widthGrid, 0);
+    translate(3*widthGrid/4, 0);
+   
+
+    text('right wrist', 0, 0);
+
     //rect(3*width/4, height/4, 100, 100);
-    drawConsecLines(data_file_ra, 210,105,30);
+    drawConsecLines(data_file_rw, 0,255,0);
   
-    
     // translate(3 * width1 / 4, -height1 / 4);
-    translate(0, heightGrid);
+    translate(0, -3*heightGrid/4);
+    text('left ankle', 0, 0);
     //rect(3*width/4, -height/4, 100, 100);
-    drawConsecLines(data_file_lw, 32,178,170);
+    drawConsecLines(data_file_la, 0,0,255);
     
     // translate(-3 * width1 / 4, -height1 / 4);
-    translate(-widthGrid, 0);
+    translate(-3*widthGrid/4, 0);
+    text('right ankle', 0, 0);
     //rect(-3*width/4, -height/4, 100, 100);
-    drawConsecLines(data_file_rw, 218,112,214);
+    drawConsecLines(data_file_ra, 255,128,0);
     pop();
     fill(255, 0, 0);
     // text(frameCount, 30, 30);
@@ -85,11 +91,14 @@ function drawConsecLines(data_file, col_R, col_G, col_B) {
         // print(currX, currY, currZ);
 
         //Slow down the drawing of this line with animation
-        strokeWeight(10);
+        strokeWeight(0.5);
         var alpha = map(constrain(frameCount - i, 0, 100), 0, 100, 70, 0);
         stroke(col_R,col_G,col_B, alpha);
+        //stroke.alpha = alpha;
+        //stroke(0, alpha);
         //line(currX, currY, currZ, prevX, prevY, prevZ);
         line(prevX, prevY, prevZ, currX, currY, currZ);
+        //line(prevX, prevY, currX, currY);
         //Don't go to next iteration unless this line is drawn
 
         prevX = currX;
